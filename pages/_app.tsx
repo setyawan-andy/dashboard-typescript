@@ -3,7 +3,7 @@ import type { AppProps } from "next/app"
 import { ColorModeContext, useMode } from "../theme"
 import { CssBaseline, ThemeProvider } from "@mui/material"
 
-import Topbar from "../views/global/Topbar"
+import { Topbar } from "../views/global"
 
 export default function App({ Component, pageProps }: AppProps) {
   const [theme, colorMode] = useMode()

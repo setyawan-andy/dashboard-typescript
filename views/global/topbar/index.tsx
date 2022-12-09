@@ -1,6 +1,6 @@
 import { Box, IconButton, useTheme, InputBase } from "@mui/material"
 import { useContext } from "react"
-import { ColorModeContext, tokens } from "../../theme"
+import { ColorModeContext, tokens } from "../../../theme"
 import { NextPage } from "next"
 
 // icons
