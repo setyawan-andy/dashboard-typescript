@@ -2,8 +2,9 @@ import "../styles/globals.css"
 import type { AppProps } from "next/app"
 import { ColorModeContext, useMode } from "../theme"
 import { CssBaseline, ThemeProvider } from "@mui/material"
+import { ProSidebarProvider } from "react-pro-sidebar"
 
-import { Topbar } from "../views/global"
+import { Topbar, SidebarComponent } from "../views/global"
 
 export default function App({ Component, pageProps }: AppProps) {
   const [theme, colorMode] = useMode()
@@ -11,12 +12,15 @@ export default function App({ Component, pageProps }: AppProps) {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <div className="app">
-          <main className="content">
-            <Topbar />
-            <Component {...pageProps} />
-          </main>
-        </div>
+        <ProSidebarProvider>
+          <div className="app">
+            <SidebarComponent />
+            <main className="content">
+              <Topbar />
+              <Component {...pageProps} />
+            </main>
+          </div>
+        </ProSidebarProvider>
       </ThemeProvider>
     </ColorModeContext.Provider>
   )

@@ -1,4 +1,4 @@
-import Sidebar from "./sidebar"
+import SidebarComponent from "./sidebarComponent"
 import Topbar from "./topbar"
 
-export { Sidebar, Topbar }
+export { SidebarComponent, Topbar }

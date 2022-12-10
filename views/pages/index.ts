@@ -8,6 +8,7 @@ import Invoices from "./invoices"
 import Line from "./line"
 import Pie from "./pie"
 import Team from "./team"
+import Calendar from "./calendar"
 
 export {
   Bar,
@@ -20,4 +21,5 @@ export {
   Line,
   Pie,
   Team,
+  Calendar,
 } // <-- export all pages
