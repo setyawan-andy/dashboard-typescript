@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, Fragment } from "react"
 import { Sidebar, Menu, MenuItem, menuClasses } from "react-pro-sidebar"
 import { Box, IconButton, Typography, useTheme } from "@mui/material"
 import Link from "next/link"
@@ -40,28 +40,25 @@ const Item = ({
   const colors = tokens(theme.palette.mode)
 
   return (
-    <Link href={to} legacyBehavior>
-      <a>
-        <MenuItem
-          active={selected === title}
-          onClick={() => setSelected(title)}
-          icon={icon}
-          rootStyles={{
-            [`.${menuClasses.button}`]: {
-              color: colors.primary[100],
-              paddingLeft: isCollapsed ? undefined : "15%",
-              "&:hover": {
-                backgroundColor: colors.grey[600],
-              },
-              backgroundColor:
-                selected === title ? colors.grey[600] : colors.primary[400],
-            },
-          }}
-        >
-          <Typography>{title}</Typography>
-        </MenuItem>
-      </a>
-    </Link>
+    <MenuItem
+      routerLink={<Link href={to} />}
+      active={selected === title}
+      onClick={() => setSelected(title)}
+      icon={icon}
+      rootStyles={{
+        [`.${menuClasses.button}`]: {
+          color: colors.primary[100],
+          paddingLeft: isCollapsed ? undefined : "15%",
+          "&:hover": {
+            backgroundColor: colors.grey[600],
+          },
+          backgroundColor:
+            selected === title ? colors.grey[600] : colors.primary[400],
+        },
+      }}
+    >
+      <Typography>{title}</Typography>
+    </MenuItem>
   )
 }
 
