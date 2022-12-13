@@ -6,6 +6,8 @@ describe("Team", () => {
   })
 
   it("should have a title", () => {
-    cy.get("h1").should("contain", "Team")
+    cy.get("div").should("contain", "Team")
   })
 })
+
+export {}
