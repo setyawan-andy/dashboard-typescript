@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 
 // ** axios imports
-import axios from "axios"
+import { axiosInstance } from "src/utils"
 
 // ** Types
 interface TeamsState {
@@ -15,7 +15,7 @@ const initialState: TeamsState = {
 
 // ** Get teams data
 export const getTeams = createAsyncThunk("teams/getTeams", async () => {
-  const response = await axios.get("http://localhost:3000/api/teams")
+  const response = await axiosInstance.get("/teams")
 
   return response
 })

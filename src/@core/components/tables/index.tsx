@@ -51,6 +51,7 @@ const Tables = ({ toolBar, rows, columns }: TablesProps) => {
         components={{
           Toolbar: toolBar ? GridToolbar : null,
         }}
+        rowsPerPageOptions={[5, 10, 100]}
       />
     </Box>
   )
