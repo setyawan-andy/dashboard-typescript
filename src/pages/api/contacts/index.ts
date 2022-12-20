@@ -1,20 +1,19 @@
 import type { NextApiRequest, NextApiResponse } from "next"
 import { mockDataContacts } from "src/@fake-db/table"
 
-type Data = {
-  id: number
-  name: string
-  email: string
-  age: number
-  phone: string
-  address: string
-  city: string
-  zipCode: string
-  registrarId: number
-}
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+  const {
+    query: { search },
+  } = req
 
-export const handler = (req: NextApiRequest, res: NextApiResponse<Data[]>) => {
-  res.status(200).json(mockDataContacts)
+  // do nothing fancy and simply return a string concatenation
+  if (search) {
+    return res.status(200).json(
+      mockDataContacts.filter((team) => {
+        return team.name.toLowerCase().includes(search.toString().toLowerCase())
+      })
+    )
+  } else {
+    res.status(200).json(mockDataContacts)
+  }
 }
-
-export default handler
