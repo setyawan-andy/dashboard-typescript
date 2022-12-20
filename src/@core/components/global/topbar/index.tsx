@@ -1,7 +1,13 @@
 import { Box, IconButton, useTheme, InputBase } from "@mui/material"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { ColorModeContext, tokens } from "src/@core/theme"
 import { NextPage } from "next"
+import { useDispatch, useSelector } from "react-redux"
+import { AppDispatch } from "src/store"
+import { setParams } from "src/store/apps/teams"
+import { useTeams } from "src/hooks/teams"
+import { useContacts } from "src/hooks/contacts"
+import { useRouter } from "next/router"
 
 // icons
 import {
@@ -14,9 +20,17 @@ import {
 } from "@mui/icons-material"
 
 const Topbar: NextPage = () => {
+  const router = useRouter()
   const theme = useTheme()
+  const dispatch = useDispatch<AppDispatch>()
   const colors = tokens(theme.palette.mode)
   const colorMode = useContext(ColorModeContext)
+  const { params } = useSelector((state: any) => state.teams)
+  const { search, handleSearch } = useTeams()
+
+  useEffect(() => {
+    dispatch(setParams({ ...params, search }))
+  }, [search])
 
   return (
     <Box display={"flex"} justifyContent={"space-between"} p={2}>
@@ -33,6 +47,8 @@ const Topbar: NextPage = () => {
             ml: 2,
           }}
           placeholder="Search"
+          onChange={handleSearch}
+          value={search}
         />
         <IconButton
           type="button"
